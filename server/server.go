@@ -91,7 +91,7 @@ func (s *Server) ProcessedData(w http.ResponseWriter, data []byte) {
 // IsBlocked ...
 func (s *Server) IsBlocked() bool {
 	s.mux.RLock()
-	s.mux.RUnlock()
+	defer s.mux.RUnlock()
 	return s.blocked
 }
 
